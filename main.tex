@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[danish,english]{babel}
+\usepackage{amsmath, amsfonts, amsthm, amssymb, tikz, graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage[ddmmyy]{datetime}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\biimp}{\Leftrightarrow}
+\newcommand{\vimp}{\Downarrow}
+\newcommand{\limm}[2]{\lim_{#1 \rightarrow #2}}
+\newcommand{\modstrid}{\lightning}
+\newcommand{\too}{\rightarrow}
+\newcommand{\from}{\leftarrow}
+
+\newcommand{\vecdd}[2]{\begin{pmatrix} #1 \\ #2 \end{pmatrix}}
+\newcommand{\vecddd}[3]{\begin{pmatrix} #1 \\ #2 \\ #3 \end{pmatrix}}
+
+\newcommand{\s}[2]{\begin{#1} #2 \end{#2}}
+\newcommand{\ud}[1]{}
+
+\newtheorem{opg}{Opgave}
+\newtheorem{lem}{Lemma}
+\newtheorem{kor}{Korolar}
+\newtheorem{setn}{Sætning}
+\newtheorem{defi}{Definition}
+\newtheorem{bem}{Bemærkning}
+
+\renewcommand*{\proofname}{Bevis}
+
+\newcommand{\complexAxis}[1]{
+	\draw [->] (-#1-1,0) -- (#1+1,0);
+	\draw [->] (0,-#1-1) -- (0,#1+1);
+	\foreach \n in {-#1,...,-1,1,2,...,#1}{
+		\draw (\n,-3pt) -- (\n,3pt)   node [above] {$\n$};
+		\draw (-3pt,\n) -- (3pt,\n)   node [right] {$\n i$};
+	}
+}
+
+
+\title{Primitivt Algebra Brevkursus}
+\author{Malte Kildelund Rosenkilde}
+
+\begin{document}
+
+	\maketitle
+	\newpage
+
+	\section*{Disclaimer}
+		Jeg kommer nok til at lave en masse fejl så tag ikke alt som værende helt
+		korrekt. Så stil endeligt spørgsmål hvis der er noget der ser forkert ud
+		eller ikke giver mening.
+		Stave fejl er nok også noget der kommer til at være meget af.
+		Alt jeg ved er fra bogen
+		Abstract Algebra, 3rd Edition af David S. Dummit og Richard M. Foote
+		så læs i den hvis der er brug for bedre kilder.
+	\section*{Del 1 21/2}
+		Det er nok et godt sted at starte med at definere de algebraiske strukture
+		vi kommer til at arbejde med.
+		\subsection*{Teori}
+		\begin{defi}
+			Lad $G$ være en mængde, da er en function $*: G \times G \too G$
+			en binær operation.
+
+			Som notation skrives $a*b$ istedet for $*(a,b)$.
+
+			En binær operation $*$ kaldes ascosiativ hvis
+			$\forall a,b,c \in G: a*(b*c) = (a*b)*c$.
+
+			En binær operation $*$ kaldes kommutativ hvis
+			$\forall a,b \in G: a*b = b*a$.
+		\end{defi}
+		\begin{defi}
+			En tupel $(G,*)$ med en mængde $G$ og en binær operation $*$ kaldes
+			en gruppe hvis:
+
+			(1) $*$ er ascosiativ.
+
+			(2) Der eksistere et element $e \in G$ så $\forall a \in G: a*e=e*a=a$
+			kaldet det neutrale element.
+
+			(3) For alle elementer $a \in G$ eksistere $a\inv \in G$ så
+			$a*a\inv = a\inv*a = e$ kaldet det inverse element til $a$.
+
+			En gruppe kaldes abelsk hvis $*$ er kommutativ.
+
+			Ofte kalder betegner man $G$ for gruppen istedet for $(G,*)$ og
+			da er operationen implicit.
+		\end{defi}
+		Som notation bruges der ofte $\cdot$ som operation istedet for $*$ og
+		$a\cdot b$ bliver ofte skrevet $ab$ istedet. Det neutrale element bliver så
+		betegnet $1$. Dog er det normalt at bruge
+		$+$ for opreationen i abelsek grupper og at bruge $-a$ istedet for $a\inv$.
+		Dog er $-$ ikke en operation her men der skrives stadig $a-b$ istedet for $a+-b$.
+		\subsection*{Sætninger}
+		\begin{setn}
+			Neutrale elementer er unikke. Altså givet en gruppe $(G,*)$ og to elementer
+			$e_1, e_2 \in G$ hvor $\forall a \in G: e_1*a=a*e_1=a$ og $e_2*a=a*e_2=a$
+			da er $e_1 = e_2$.
+		\end{setn}
+		\begin{proof}
+			$$e_1 = e_1*e_2 = e_2$$
+		\end{proof}
+		\subsection*{Vis selv}
+		\begin{setn}
+			Invers elementer er unikke. Altså givet en gruppe $(G,*)$ og tre element
+			$a,a_1\inv,a_2\inv\in G$ hvor $a*a_1\inv=a_1\inv*a=e$ og $a*a_2\inv=a_2\inv*a=e$
+			da er $a_1\inv = a_2\inv$.
+		\end{setn}
+		\begin{setn}
+			Givet en gruppe $(G,*)$ og et element $a \in G$ da er $(a\inv)\inv = a$.
+		\end{setn}
+		\begin{setn}
+			Givet en gruppe $(G,*)$ og to elementer $a,b \in G$ da er $(a*b)\inv=a\inv*b\inv$.
+		\end{setn}
+	\ud{
+	\section*{Del 2 22/2}
+		En vigtig del af abstract algebra er at se på relationer mellem
+		forskellige strukture hvilket gøres ved hjælp af homomorphier og isomorphier.
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $(G,*)$ og $(G,\diamond)$ være to grupper og $\varphi: G \too H$ være
+			en function. Da kaldes $\phi$ en gruppe homomorphi hvis
+			$$\forall a, b \in G: \varphi(a*b) = \varphi(a) \diamond \varphi(b)$$
+
+			En bijektiv homomorphi kaldes en isomorphi.
+
+			To grupper $G$ og $H$ kaldes isomorphe hvis der eksistere en isomorphi
+			mellem dem. Dette skrives $G \cong H$.
+
+			En isomorphi $\phi: G \too G$ mellem en gruppe $G$ og den selv kaldes for en
+			automorphi på $G$.
+		\end{defi}
+		\subsection*{Sætninger}
+		\begin{setn}
+			For to grupper $(G,*)$ og $(H, \diamond)$ med neutrale elementer $e_G$ og $e_H$
+			og en homomorphi $\varphi: G \too H$ da er $\varphi(e_1) = e_2$.
+		\end{setn}
+		\begin{proof}
+			$$\varphi(e_G) = \varphi(e_G)\diamond e_H
+			= \varphi(e_G)\diamond\varphi(e_G)\diamond\varphi(e_G)\inv
+			= \varphi(e_G*e_G)\diamond\varphi(e_G)\inv
+			= \varphi(e_G)\diamond\varphi(e_G)\inv = e_H$$
+		\end{proof}
+		\subsection*{Vis selv}
+		\begin{setn}
+			For to grupper $(G,*)$ og $(H, \diamond)$, en homomorphi $\varphi: G \too H$
+			og et element $a \in G$ da er $\varphi(a)\inv = \varphi(a\inv)$.
+		\end{setn}
+	\section*{Til senere}
+		\begin{defi}
+			En tupel $(R,+,\cdot)$ med en mængde $R$ og binære operationer $+, \cdot$
+			kaldes en ring hvis:
+
+			(1) $(R,+)$ er en gruppe hvor neutral elementet kaldes $0$.
+
+			(2) $\cdot$ er en acosiativ operation.
+
+			(3) $\cdot$ distribuere over $+$ alstå $\forall a,b,c \in R: a*(b+c)=a*b+a*c$
+			og $(a+b)*c = a*c+b*c$.
+		\end{defi}
+	\section*{Til senere}
+	}
+
+\end{document}
