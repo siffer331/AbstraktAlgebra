@@ -61,9 +61,9 @@
 		Alt jeg ved er fra bogen
 		Abstract Algebra, 3rd Edition af David S. Dummit og Richard M. Foote
 		så læs i den hvis der er brug for bedre kilder.
-	\section*{Del 1 21/2}
-		Det er nok et godt sted at starte med at definere de algebraiske strukture
-		vi kommer til at arbejde med.
+	\section*{Grupper 21/2}
+		Det helt basele i abstract algebra er grupper hvilket er en struktur der
+		ses overalt i matematikken.
 		\subsection*{Teori}
 		\begin{defi}
 			Lad $G$ være en mængde, da er en function $*: G \times G \too G$
@@ -120,14 +120,14 @@
 		\begin{setn}
 			Givet en gruppe $(G,*)$ og to elementer $a,b \in G$ da er $(a*b)\inv=b\inv*a\inv$.
 		\end{setn}
-	\ud{
-	\section*{Del 2 22/2}
+	\newpage
+	\section*{Homomorphier 22/2}
 		En vigtig del af abstract algebra er at se på relationer mellem
 		forskellige strukture hvilket gøres ved hjælp af homomorphier og isomorphier.
 		\subsection*{Definitioner}
 		\begin{defi}
 			Lad $(G,*)$ og $(G,\diamond)$ være to grupper og $\varphi: G \too H$ være
-			en function. Da kaldes $\phi$ en gruppe homomorphi hvis
+			en function. Da kaldes $\varphi$ en gruppe homomorphi hvis
 			$$\forall a, b \in G: \varphi(a*b) = \varphi(a) \diamond \varphi(b)$$
 
 			En bijektiv homomorphi kaldes en isomorphi.
@@ -135,8 +135,15 @@
 			To grupper $G$ og $H$ kaldes isomorphe hvis der eksistere en isomorphi
 			mellem dem. Dette skrives $G \cong H$.
 
-			En isomorphi $\phi: G \too G$ mellem en gruppe $G$ og den selv kaldes for en
+			En isomorphi $\varphi: G \too G$ mellem en gruppe $G$ og den selv kaldes for en
 			automorphi på $G$.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ og $H$ være to grupper med identiterter $e_G$ og $e_H$
+			og $\varphi: G \too H$ være en homomorphi.
+			Da betegner kernen af $\varphi$ mængde af elementer som bliver afbilledet til $e_H$.
+
+			$$\ker(\varphi) = \{g \in G | \varphi(g) = e_H\}$$
 		\end{defi}
 		\subsection*{Sætninger}
 		\begin{setn}
@@ -151,9 +158,37 @@
 		\end{proof}
 		\subsection*{Vis selv}
 		\begin{setn}
-			For to grupper $(G,*)$ og $(H, \diamond)$, en homomorphi $\varphi: G \too H$
+			For to grupper $G$ og $H$, en homomorphi $\varphi: G \too H$
 			og et element $a \in G$ da er $\varphi(a)\inv = \varphi(a\inv)$.
 		\end{setn}
+		\begin{setn}
+			For to grupper $G$ og $H$ eksistere der altid en homomoprhi mellem dem.
+		\end{setn}
+		At to grupper er isomorphe betyder at deres struktur er meget ens og isomorphier
+		fungere næsten som en ekvilens relation hvilket ses i følgene opgave.
+		\begin{setn}
+			Isomorphier opfylder kravende for en ekvivilens relation:
+
+			$\cong$ er refleksiv altså $G \cong G$ for alle grupper $G$.
+
+			$\cong$ er symmetrisk altså $G \cong H \biimp H \cong G$ fo alle grupper $G$ og $H$.
+
+			$\cong$ er transitiv altså $G \cong H \wedge H \cong K \imp G \cong K$
+			for alle grupper $G$, $H$ og $K$.
+
+		\end{setn}
+		Årsagen til at det ikke er en ekvivilens relations skyldes at mængde lærer ikke
+		kan lide at konstruere en mængde af alle grupper og der dermed ikke er en mængde
+		ekvivilens relationen kan være over.
+		\begin{setn}[$\star$]
+			Lad $G$ og $H$ være to grupper med identiterter $e_G$ og $e_H$
+			og $\varphi: G \too H$ være en homomorphi.
+
+			Da er $\varphi$ injektiv hvis og kun hvis $\ker(\varphi) = \{e_G\}$.
+		\end{setn}
+		Denne sætninger ret relevant så jeg skriver beviset i næste opdatering, det er
+		dog stadig en ret god øvelse at vise.
+	\ud{
 	\section*{Til senere}
 		\begin{defi}
 			En tupel $(R,+,\cdot)$ med en mængde $R$ og binære operationer $+, \cdot$
