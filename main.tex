@@ -142,7 +142,8 @@
 		\begin{defi}
 			Lad $G$ og $H$ være to grupper med identiterter $e_G$ og $e_H$
 			og $\varphi: G \too H$ være en homomorphi.
-			Da betegner kernen af $\varphi$ mængde af elementer som bliver afbilledet til $e_H$.
+			Da betegner kernen af $\varphi$ mængde af elementer som bliver
+			afbilledet til $e_H$.
 
 			$$\ker(\varphi) = \{g \in G | \varphi(g) = e_H\}$$
 		\end{defi}
@@ -172,7 +173,8 @@
 
 			$\cong$ er refleksiv altså $G \cong G$ for alle grupper $G$.
 
-			$\cong$ er symmetrisk altså $G \cong H \biimp H \cong G$ fo alle grupper $G$ og $H$.
+			$\cong$ er symmetrisk altså $G \cong H \biimp H \cong G$ for
+			alle grupper $G$ og $H$.
 
 			$\cong$ er transitiv altså $G \cong H \wedge H \cong K \imp G \cong K$
 			for alle grupper $G$, $H$ og $K$.
@@ -204,8 +206,10 @@
 			dermed er $\ker{\varphi} \ne {e_G}$.
 		\end{proof}
 		\subsection*{Definitioner}
-		Fra nu af vil noten skifte over til multiplikativ notation så operationer er underforstået
-		i forhold til hvor de sker og der bliver brugt $a\cdot b$ eller bare $ab$.
+		Fra nu af vil noten skifte over til multiplikativ notation så operationer
+		er underforstået i forhold til hvor de sker og der bliver brugt. $1$ bliver
+		også brugt som enhed.
+		$a\cdot b$ eller bare $ab$.
 		\begin{defi}
 			Lad $G$ være en gruppe og $H \ne Ø \subseteq G$ være en delmængde.
 			Da er $H$ en undergruppe af $G$ noteret $H \le G$ hvis
@@ -242,6 +246,9 @@
 		\end{proof}
 		\subsection*{Vis selv}
 		\begin{setn}
+			Lad $G$ være en gruppe og $H \le G$. Da gælder det at $1 \in H$.
+		\end{setn}
+		\begin{setn}
 			Lad $G$ og $H$ være to grupper og $\varphi: G \too H$ være en homomorphi.
 			Da er både $\ker(\varphi)$ og $\varphi(G)$ undergrupper af $H$.
 			
@@ -251,13 +258,49 @@
 			Lad $G$ være en gruppe, $H \le G$ og $a,b \in G$. Da er $|aH| = |bH|$.
 			Hvilket er ekvivilent med at der eksistere en bijektion mellem $|aH|$ og $|bH|$.
 		\end{setn}
-		\begin{setn}[Lagrange $\star$]
+		\begin{setn}[Lagrange $\star$] \label{Lagrange}
 			Lad $G$ være en endelig gruppe og $H \le G$. Da gælder det at
 			$$|H| \,\Big|\, |G|$$
 			Læses $|H|$ deler $|G|$.
 		\end{setn}
 		(Hint: Benyt sætning \ref{SidKlaStø} og \ref{SidKlaPar}.)
 	\ud{
+	\newpage
+	\section*{Normale undergrupper 24/2}
+		Idag bliver lidt kortere.
+		\subsection*{Opsamling}
+		Her er beviset for \ref{Lagrange}.
+		\begin{proof}
+			For et givent element $g \in G$ må $g \in gH$ da $1 \in H$.
+			Fra sætning \ref{SidKlaPar} ses det så at $H$ sideklasserne
+			er en partition af $G$. Lad $K$ betgne mægnden af $H$ sideklasser da må
+			$$|G| = \sum_{S \in K} |S|$$
+			Fra \ref{SidKlaStø} fåes det at alle $H$ sideklasser har samme størelser og
+			da $H$ er en $H$ sideklasse har de alle størelse $|H|$. Det ses så at
+			$$|G| = \sum_{S \in K} |S| = \sum_{S \in K} |H| = |H|\cdot |K|$$
+			Da $G$ er endelig må både $H$ og $K$ være endelige og $|G|$, $|H|$ og $|K|$
+			må da være hele tal og derfor må $|H| \,\Big|\, |G|$.
+		\end{proof}
+		\subsection*{Definitioner}
+		Det giver nu mening at tale om mængden af sideklasser.
+		\begin{defi}
+			Lad $G$ være en gruppe og $H \le G$. Da betegner $|G:H|$
+			antallet af $H$ sideklasser. $|G:H|$ kan godt være uendelig.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ være en gruppe og $H \le G$. Da er $H$ en normal undergruppe hvis
+			$$\forall g \in G: gHg\inv = H$$
+			Hvilket skrives $H \unlhd G$.
+		\end{defi}
+		\subsection*{Vis selv}
+		\begin{setn}
+			Lad $G$ og $H$ være grupper og $\varphi: G \too H$ være en homomorphi.
+			Da er $\ker(\varphi) \unlhd H$.
+		\end{setn}
+		\subsection*{Opsamling}
+		\subsection*{Definitioner}
+		\subsection*{Sætninger}
+		\subsection*{Vis selv}
 	\section*{Til senere}
 		\begin{defi}
 			En tupel $(R,+,\cdot)$ med en mængde $R$ og binære operationer $+, \cdot$
