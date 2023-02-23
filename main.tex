@@ -32,6 +32,7 @@
 \newtheorem{setn}{Sætning}
 \newtheorem{defi}{Definition}
 \newtheorem{bem}{Bemærkning}
+\newtheorem{nota}{Notation}
 
 \renewcommand*{\proofname}{Bevis}
 
@@ -180,7 +181,7 @@
 		Årsagen til at det ikke er en ekvivilens relations skyldes at mængde lærer ikke
 		kan lide at konstruere en mængde af alle grupper og der dermed ikke er en mængde
 		ekvivilens relationen kan være over.
-		\begin{setn}[$\star$]
+		\begin{setn}[$\star$] \label{KerInj}
 			Lad $G$ og $H$ være to grupper med identiterter $e_G$ og $e_H$
 			og $\varphi: G \too H$ være en homomorphi.
 
@@ -188,6 +189,74 @@
 		\end{setn}
 		Denne sætninger ret relevant så jeg skriver beviset i næste opdatering, det er
 		dog stadig en ret god øvelse at vise.
+	\newpage
+	\section*{Undergrupper 23/2}
+		\subsection*{Opsamling}
+		Her er beviset for sætning \ref{KerInj}.
+		\begin{proof}
+			Lad $a,b \in G$.
+			Hvis $\ker(\varphi) = {e_G}$ da ses det at
+			$$\varphi(a) = \varphi(b) \imp \varphi(a*b\inv)=\varphi(a)\varphi(b)\inv=e_H
+			\imp a*b\inv \in \ker(\varphi) \imp a*b\inv = e_G \imp a = b$$
+			Hvis $\varphi$ ikke er injektiv eksistere $a,b \in G$ så $a \ne b$ og
+			$\varphi(a) = \varphi(b)$. Der kan det som før konkluderes at
+			$a*b\inv \in \ker(\varphi)$ men da $a \ne b$ er $a*b\inv \ne e_G$ og
+			dermed er $\ker{\varphi} \ne {e_G}$.
+		\end{proof}
+		\subsection*{Definitioner}
+		Fra nu af vil noten skifte over til multiplikativ notation så operationer er underforstået
+		i forhold til hvor de sker og der bliver brugt $a\cdot b$ eller bare $ab$.
+		\begin{defi}
+			Lad $G$ være en gruppe og $H \ne Ø \subseteq G$ være en delmængde.
+			Da er $H$ en undergruppe af $G$ noteret $H \le G$ hvis
+
+			(1) $x \in H \imp x\inv \in H$
+
+			(2) $x,y \in H \imp xy \in H$
+		\end{defi}
+		\begin{nota}
+			Lad $G$ være en gruppe, $H \le G$ og $g \in G$. Da er der følgende notation
+
+			$gH = \{gh | \forall h \in H\}$ Kaldet en venstrsideklasse.
+
+			$Hg = \{hg | \forall h \in H\}$ Kaldet en højresideklasse.
+
+			$gHg\inv = \{ghg\inv | \forall h \in H\}$
+			Kaldet $H$ konjugeret med $g$ ligesom $ghg\inv$ er $h$ konjugeret med $g$.
+		\end{nota}
+		\subsection*{Sætninger}
+		\begin{setn} \label{SidKlaPar}
+			Lad $G$ være en gruppe og $H \le G$. For elementer $a, b \in G$ da er
+			$aH = bH$ eller $aH\cap bH = Ø$.
+		\end{setn}
+		\begin{proof}
+			Antag at der eksister $c \in aH\cap bH$. Da ligger $c$ både i $aH$ og i $bH$ så
+			der må eksistere $h_1, h_2$ så $c = ah_1$ og $c = bh_2$. Da ses det at
+			$$ah_1 = bh_2 \imp a=bh_2h_1\inv$$
+			Lad nu $d$ være et element
+			i $aH$. Da ses det at
+			$$d = ah_3=bh_2h_1\inv h_3$$
+			Men da $h_1$, $h_2$ og $h_3$ ligger i $H$ må $h_2h_1\inv h_3$ ligge i $H$
+			da $H$ er en undegruppe. Altså må $d$ ligge i $bH$ og dermed er $aH \subseteq bH$.
+			Det ses symmetrisk at $bH \subseteq aH$ hvilket medføre $aH = bH$.
+		\end{proof}
+		\subsection*{Vis selv}
+		\begin{setn} \label{SidKlaStø}
+			Lad $G$ og $H$ være to grupper og $\varphi: G \too H$ være en homomorphi.
+			Da er både $\ker(\varphi)$ og $\varphi(G)$ undergrupper af $H$.
+			
+			(Note: $\varphi(G)$ er billedet af $\varphi$ ofte skrevet $\text{im}(\varphi)$.)
+		\end{setn}
+		\begin{setn}
+			Lad $G$ være en gruppe, $H \le G$ og $a,b \in G$. Da er $|aH| = |bH|$.
+			Hvilket er ekvivilent med at der eksistere en bijektion mellem $|aH|$ og $|bH|$.
+		\end{setn}
+		\begin{setn}[Lagrange $\star$]
+			Lad $G$ være en endelig gruppe og $H \le G$. Da gælder det at
+			$$|H| \,\Big|\, |G|$$
+			Læses $|H|$ deler $|G|$.
+		\end{setn}
+		(Hint: Benyt sætning \ref{SidKlaStø} og \ref{SidKlaPar}.)
 	\ud{
 	\section*{Til senere}
 		\begin{defi}
