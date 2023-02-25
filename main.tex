@@ -293,7 +293,172 @@
 			Lad $G$ og $H$ være grupper og $\varphi: G \too H$ være en homomorphi.
 			Da er $\ker(\varphi) \unlhd H$.
 		\end{setn}
+	\newpage
+	\section*{Kvotientgrupper 25/2}
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en gruppe og $H \unlhd G$ da betegner $G/H$ gruppen
+			af $H$ sideklasserne hvor for to side klasser $aH$ og $bH$ hvor $a$ og $b$
+			er to vilkårlige representanter er $aH\cdot bH = abH$. Denne gruppe er kaldet
+			en kvotientgruppe.
+			Homomorphien $\pi: G \too G/H$ defineret ved $\pi(g) = gH$ er kaldet
+			den kanoniske afbildning.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ være en gruppe og $H \le G$. Da er der følgende undergrupper:
+			$$N_G(H) = \{g \in G| gHg\inv = H\}$$
+			Kaldet normalisatoren til $H$.
+			$$C_G(H) = \{g \in G| \forall h \in H: gh = hg\}$$
+			Kaldet centralisatoren til $H$.
+			$Z(G) = C_G(G)$ kaldet centeret i $G$.
+		\end{defi}
+		\subsection*{Sætninger}
+		\begin{setn}
+			Kvotientgruppe operationen er veldefineret.
+		\end{setn}
+		\begin{proof}
+			Lad $a,a',b,b' \in G$ så $aH = a'H$ og $bH = b'H$. Da eksistere $h_1, h_2 \in H$
+			så $a' = ah_1$ og $b' = bh_2$. Betragt nu
+			$$a'b'H = ah_1bh_2H = abb\inv h_1bH$$
+			Men da $H$ er en normal under gruppe ligger $b\inv h_1 b = h_3 \in H$.
+			$$a'b'H = abb\inv h_1bH = abh_3H = abH$$
+			Ergo er valget af representatner for gruppe operationen ligegyldig og operationen
+			er dermed veldefineret.
+		\end{proof}
+		\begin{setn}
+			Kvotientgrupper er grupper.
+		\end{setn}
+		\begin{proof}
+			Det ses at der både er inverser, et neutralt element og at operationen er asosiativ:
+
+			$1H\cdot aH = aH$,
+
+			$aH\cdot a\inv H = 1H$,
+
+			$aH(bH\cdot cH) = aH \cdot bcH = abcH = abH \cdot cH = (aH\cdot bH)cH$.
+		\end{proof}
+		\begin{setn}
+			Lad $G$ være en gruppe og $H \le G$. Da gælder det at 
+			$$H \biimp a\inv b \in H \biimp aH = bH$$
+		\end{setn}
+		\begin{proof}
+			$$aH = bH \biimp \exists h \in H: b = ah \biimp \exists h \in H: a\inv b = h \biimp
+			a\inv b \in H$$
+			Første biimplikation fåes fra sætning \ref{SidKlaPar}.
+		\end{proof}
+		\subsection*{Vis selv}
+		\begin{setn}
+			Lad $G$ væren en gruppe og $H \le G$, da er både $C_G(H)$ og $N_G(H)$ undergrupper
+			af $G$.
+		\end{setn}
+		\begin{setn}
+			Lad $G$ være en gruppe og $H \unlhd G$ da er
+			den kanoniske afbildning en homomorphi.
+		\end{setn}
+		\begin{opg}
+			Vis at $(3\Z,+)$ er en gruppe og bestem $\Z/3\Z$.
+
+			Bestem $\Z/n\Z$ for et naturligt tal $n$.
+
+			(Bemærkning: $n\Z = \{n\cdot a| \forall a \in \Z\}$.)
+		\end{opg}
+		\begin{setn}[Første isomorphi sætning $\star$] \label{Iso1}
+			Lad $G$ og $H$ være grupper og lad $\varphi: G \too H$ være en gruppe homomorphi.
+			Da er $G/\ker(\varphi) \cong \varphi(G)$.
+		\end{setn}
 	\ud{
+	\newpage
+	\section*{Isomorphi sætninger del 1 26/2}
+		\subsection*{Opsamling}
+		Her er beviset for \ref{Iso1}.
+		\begin{proof}
+			Betragt functionen $\pi: G/\ker(\varphi) \too \phi(G)$ defineret ved
+			$$\pi(g\ker(\varphi)) = \varphi(g)$$
+			Først ses det at $\pi$ er veldefineret. Så antag $g\ker(\varphi) = g'\ker(\varphi)$.
+			Der eksistere $k \in \ker(\varphi)$ så
+			$$\pi(g\ker(\varphi)) = \varphi(g) = \varphi(g'k) = \varphi(g')\varphi(k)=\varphi(g') =
+			\pi(g'\ker(\varphi))$$
+			Det ses nu at $\pi$ er en homomorphi:
+			$$\pi(a\ker(\varphi)b\ker(\varphi)) = \pi(ab\ker(\varphi)) = \varphi(ab) =
+			\varphi(a)\varphi(b)=\pi(a\ker(\varphi))\pi(b\ker(\varphi))$$
+			Det ses let at $\pi$ er surjektiv da hvis $h \in \varphi(G)$ eksistere $g$
+			så $\varphi(g) = h$ og da er $\pi(g\ker(\varphi)) = \varphi(g) = h$.
+			Det ses også at $\pi$ er injektiv da
+			$$\pi(g\ker(\varphi)) = 1 \imp \varphi(g) = 1 \imp g \in \ker(\varphi) \imp
+			g\ker(\varphi) = 1\ker(\varphi)$$
+			Da er kernen af $\pi$ triviel og fra sætning \ref{KerInj} må $\pi$ være injektiv.
+			Ergo er $\pi$ en isomorphi.
+		\end{proof}
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en gruppe og $A$ og $B$ være undergrupper af $G$. Da betegner
+			$$AB = \{ab | \forall a \in A \forall b \in B\}$$
+		\end{defi}
+		\subsection*{Sætninger}
+		\begin{setn}
+			Lad $G$ være en gruppe og $A \subset N_G(B)$ og $B$ være undergrupper af $G$.
+			Da er $AB \le G$.
+		\end{setn}
+		\begin{proof}
+			Betragt $a \in A$ og $b \in B$ da $A \subset N_G(B)$ er $ab\inv a\inv = b' \in B$ og
+			$$(ab)\inv = b\inv a\inv = a\inv a b \inv a \inv = a \inv b'$$
+			Da $a\inv \in A$ og $b' \in B$ ses det så at $(ab)\inv \in AB$. Betragt nu
+			$a_1, a_2 \in A$ og $b_1, b_2 \ in B$ da må $a_2\inv b_1 a_2 = b' \in B$ det ses så at
+			$$a_1b_1a_2b_2 = a_1a_2a_2\inv b_1a_2b_2 = a_1a_2b'b_2$$
+			ergo ligger $(a_1b_1)(a_2b_2)$ i $AB$ og $AB$ må være en undergruppe.
+		\end{proof}
+		\begin{setn}[Den anden isomorphi sætning]
+			Lad $G$ være en gruppe og $A \subset N_G(B)$ og $B$ være undergrupper af $G$.
+			Da er $B \unlhd AB$, $a\cap B \unlhd A$ og $AB/B \cong A/A\cap B$.
+		\end{setn}
+		\begin{proof}
+			Beviset for at $B \unlhd AB$ og $a\cap B \unlhd A$ undlades til læseren(Dagens opgaver).
+			Bestem $\varphi: A \too AB/B$ ved $\varphi(a) = aB$. Da ses det at $\varphi$ er en
+			homomorphi:
+			$$\varphi(aa') = aa'B = aBa'B = \varphi(a)\varphi(a')$$
+			Vi bestemmer nu $\ker(\varphi)$ så betragt $a \in A$ så $\varphi(a) = 1B$
+			Da må $aB = \varphi(a) = 1B$ ergo må $a \in B$ og kernen er dermed $A\cap B$.
+			Det ses også at $\varphi$ er surjectiv da $aB = \varphi(a')$ for enhver representant
+			$a' \in aB$. Fra sætning \ref{Iso1} fåes det så at
+			$$A/A\cap B = A/\ker(\varphi) \cong \varphi(A) = AB/B$$
+		\end{proof}
+	\newpage
+	\section*{Isomorphi sætninger del 2 27/2}
+		\subsection*{Vis selv}
+		\begin{setn}
+			Lad $G$ være en gruppe, $H \unlhd G$, $K \unlhd G$ og $H \le K$.
+
+			Da er $K/H \unlhd G/H$ og
+		\end{setn}
+		\subsection*{Sætninger}
+		\begin{setn}[Tredje isomorphi sætning] \label{Iso3}
+			Lad $G$ være en gruppe, $H \unlhd G$, $K \unlhd G$ og $H \le K$.
+
+			Da er $(G/H)/(K/H) \cong G/K$
+		\end{setn}
+		\begin{proof}
+			Definer $\varphi: G/H \too G/K$ ved $\varphi(gH) = gK$. Først ses
+			det at $\varphi$ er veldefineret. Lad $gH = g'H$ da eksister $h$ så
+			$g' = gh$. Da $H \le K$ ses det at
+			$$\varphi(g'H) = g'K = ghK = gK$$
+			Vi bestemmer nu $\ker(\varphi)$.
+			\begin{align*}
+				\ker(\varphi) &= \{gH \in G/H| \varphi(gH) = 1K\} \\
+				&= \{gH \in G/H| gK = 1K\} \\
+				&= \{gH \in G/H| g \in K\} \\
+				&= K/H
+			\end{align*}
+			Det ses let at $\varphi$ er surjektiv og fra sætning \ref{Iso1} ses det så at
+			$$(G/H)/(K/H) = (G/K)/\ker(\varphi) \cong = \varphi(G/K) = G/K$$
+		\end{proof}
+		Af isomorphi sætninger er det den første der er den stærkeste hvilket de to andre viser
+		da beviserne falder ud ved at betragte den mest trivielle homomorphi og der efter bruge
+		første isomorphi sætning.
+
+		Næste gang begynder vi på det sidste store resultat i gruppe teori vi vil se på før vi
+		går videre til ringe og legmer.
+	\newpage
+	\section*{Start på Sylow}
 		\subsection*{Opsamling}
 		\subsection*{Definitioner}
 		\subsection*{Sætninger}
