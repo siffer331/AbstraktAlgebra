@@ -366,11 +366,10 @@
 			Lad $G$ og $H$ være grupper og lad $\varphi: G \too H$ være en gruppe homomorphi.
 			Da er $G/\ker(\varphi) \cong \varphi(G)$.
 		\end{setn}
-	\ud{
 	\newpage
 	\section*{Isomorphi sætninger del 1 26/2}
 		\subsection*{Opsamling}
-		Her er beviset for \ref{Iso1}.
+		Her er beviset for sætning \ref{Iso1}.
 		\begin{proof}
 			Betragt functionen $\pi: G/\ker(\varphi) \too \phi(G)$ defineret ved
 			$$\pi(g\ker(\varphi)) = \varphi(g)$$
@@ -396,11 +395,11 @@
 		\end{defi}
 		\subsection*{Sætninger}
 		\begin{setn}
-			Lad $G$ være en gruppe og $A \subset N_G(B)$ og $B$ være undergrupper af $G$.
+			Lad $G$ være en gruppe og $A \subseteq N_G(B)$ og $B$ være undergrupper af $G$.
 			Da er $AB \le G$.
 		\end{setn}
 		\begin{proof}
-			Betragt $a \in A$ og $b \in B$ da $A \subset N_G(B)$ er $ab\inv a\inv = b' \in B$ og
+			Betragt $a \in A$ og $b \in B$ da $A \subseteq N_G(B)$ er $ab\inv a\inv = b' \in B$ og
 			$$(ab)\inv = b\inv a\inv = a\inv a b \inv a \inv = a \inv b'$$
 			Da $a\inv \in A$ og $b' \in B$ ses det så at $(ab)\inv \in AB$. Betragt nu
 			$a_1, a_2 \in A$ og $b_1, b_2 \ in B$ da må $a_2\inv b_1 a_2 = b' \in B$ det ses så at
@@ -412,7 +411,7 @@
 			Da er $B \unlhd AB$, $a\cap B \unlhd A$ og $AB/B \cong A/A\cap B$.
 		\end{setn}
 		\begin{proof}
-			Beviset for at $B \unlhd AB$ og $a\cap B \unlhd A$ undlades til læseren(Dagens opgaver).
+			Beviset for at $B \unlhd AB$ og $A\cap B \unlhd A$ undlades til læseren(Dagens opgaver).
 			Bestem $\varphi: A \too AB/B$ ved $\varphi(a) = aB$. Da ses det at $\varphi$ er en
 			homomorphi:
 			$$\varphi(aa') = aa'B = aBa'B = \varphi(a)\varphi(a')$$
@@ -423,6 +422,7 @@
 			$$A/A\cap B = A/\ker(\varphi) \cong \varphi(A) = AB/B$$
 		\end{proof}
 	\newpage
+	\ud{
 	\section*{Isomorphi sætninger del 2 27/2}
 		\subsection*{Vis selv}
 		\begin{setn}
