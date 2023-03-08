@@ -337,9 +337,9 @@
 
 			$aH(bH\cdot cH) = aH \cdot bcH = abcH = abH \cdot cH = (aH\cdot bH)cH$.
 		\end{proof}
-		\begin{setn}
+		\begin{setn} \label{SidKlaKrav}
 			Lad $G$ være en gruppe og $H \le G$. Da gælder det at 
-			$$H \biimp a\inv b \in H \biimp aH = bH$$
+			$$a\inv b \in H \biimp aH = bH$$
 		\end{setn}
 		\begin{proof}
 			$$aH = bH \biimp \exists h \in H: b = ah \biimp \exists h \in H: a\inv b = h \biimp
@@ -456,9 +456,128 @@
 
 		Næste gang begynder vi på det sidste store resultat i gruppe teori vi vil se på før vi
 		går videre til ringe og legmer.
-	\ud{
 	\newpage
 	\section*{Start på Sylow}
+		Vi kan nu begynd at gennemgå nogle sætninger der skal bruges til at vise
+		Sylows sætninger.
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en gruppe og lad $g \in G$.
+			Da betegner $g^0 :=1$.
+			For $n \in \N$ betegner $g^n := g^{n-1}\cdot g$ og $g^{-n} := g^{-n+1}\cdot g\inv$.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ være en gruppe og lad $g \in G$.
+			Da er ordenen af $g$ det mindste tal $n \in \N$ så $g^n = 1$.
+			Dette skrives $|g| = n$ hvis sådan tal ikke eksistere skrives $|g| = \infty$.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ være en gruppe og $g_1, g_2, \dots, g_n \in G$. Da betegner
+			$<g_1,g_2,\dots g_n>$ den mindste undergruppe af $G$ eder indeholder
+			$g_1, g_2, \dots, g_n$.
+		\end{defi}
+		\subsection*{Vis selv}
+		\begin{setn}
+			Lad $G$ være en gruppe og $g \in G$. Da er $|g| = |<g>|$.
+		\end{setn}
+		\begin{setn}
+			Lad $G$ være en gruppe, $g \in G$ og $n \in \N$. Da er
+			$$|x^n| = \frac{|x|}{\gcd(|x|,n)}$$
+		\end{setn}
+		\subsection*{Sætninger}
+		\begin{setn}
+			Lad $G$ være en gruppe og $H, K \le G$. Da er
+			$$|HK| = \frac{|H||K|}{|H \cap K|}$$
+		\end{setn}
+		\begin{proof}
+			Da
+			$$HK = \{hk | \forall h \in H \forall k \in K\} = \bigcup_{h\in H} hK$$
+			Hvilket betyder at der skal tælles forskellige $K$ side klasser i $H$.
+			Det ses dog for $h_1,h_2 \in H$ at
+			$$h_1K = h_2K \biimp h_2\inv h_1 \in K \biimp h_2\inv h_1 \in H \cap K
+			\biimp h_1(H\cap K) = h_2(H\cap K)$$
+			Altså er antallet af $hK$ sideklasser for $h \in H$ antallet
+			af $H\cap K$ sideklasser i $H$. Det ses fra lagrange at dette antal er
+			$\frac{|H|}{|H\cap K|}$ og da hver $K$ sideklasse indeholder $|K|$ elementer
+			fåes det ønskede:
+			$$|HK| = \frac{|H||K|}{|H \cap K|}$$
+		\end{proof}
+		\begin{setn}
+			Lad $G$ være en abelsk gruppe hvor $p \; \Big| \; |G|$ hvor $p$ er et primtal.
+			Da eksistere et element med orden $p$.
+		\end{setn}
+		\begin{proof}
+			Sætningen gælder trivielt hvis $|G| = p$.
+			Antag for induction at sætningen gælder for alle grupper $|H| < |G|$.
+			Betragt et element $x$ hvor $p \; \Big | \; |x| = p\cdot n$. Da må 
+			$|x^n| = p$.
+			Hvis $p \; \nmid \; |x|$. Da $F$ er abelsk er
+			$<x> \unlhd G$ og dermed er $|G/<x>| < |G|$. Fra Lagrange og $p \; \nmid \; |x|$
+			ses det at
+			$$p \; \Big | \; |G/<x>| = \frac{|G|}{|<x>|}$$
+			Da eksistere en et element $\bar{y} \in G/<x>$ med $|\bar{y}| = p$. Da eksistere
+			$y \in G$ så $\bar{y} = yN$. Da ses det at $y \notin <x>$ og $y^p \in <x>$. Da er
+			$<y^p> \le <x>$ ergo er $<y> \ne <y^p>$ og dermed $p \; \Big | \; |y|$.
+			Da er $|y| = p \cdot n$ og $|y^n| = p$.
+		\end{proof}
+	\newpage
+	\section*{Konjugens klasser}
+		Der er stadig en bid vej til Sylows sætning så vi begynder nu at se på
+		konjugens klasser for at vise klasse sætningen.
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en gruppe og $a,b \in G$. Da kaldes $a$ og $b$ konjugerede af
+			hindanden hvis der eksistere $g \in G$ så $gag\inv = b$.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ være en gruppe og $H \le G$ da kaldes $H$
+			en konjugens klasse hvis der eksistere et element $h \in G$ så
+			$$H = \{ghg\inv | \forall g \in G\}$$
+		\end{defi}
+		\subsection*{Sætninger}
+		\begin{setn}
+			Lad $G$ være en gruppe og lad $H$ være en konjugens klasse med
+				$$H = \{ghg\inv | \forall g \in G\}$$
+			For et element $h$. Da er
+			$$|H| = |G:C_G(h)|$$
+		\end{setn}
+		\begin{proof}
+			Betragt en afbildningen $f$ fra sideklasserne til $C_G(h)$ til $H$ med
+			$$f(aC_G(h)) = aha\inv$$
+			Først skal det lige vises at $f$ er veldefineret.
+			Fra sætning \ref{SidKlaKrav} fåes det at
+			$$aC_G(h)=bC_G(h) \biimp b\inv a \in C_G(h) \biimp h = (b\inv a)h(b\inv a)\inv =
+			b\inv aha\inv b \biimp aha\inv = bhb\inv \biimp f(a) = f(b)$$
+			Dette viser også at $f$ også er injektiv. Så mangler det blot at $f$ er surjektiv.
+			Betragt $a \in H$ da eksitere $g$ så
+			$$a = ghg\inv = f(gC_G(H))$$
+			Hvilket viser at $f$ er bijektiv hvilket medfører at
+			$$|H| = |G:C_G(h)|$$
+		\end{proof}
+		\begin{setn}[Klasse sætningen]
+			Lad $G$ være en endelig gruppe og lad $g_1,g_2,\dots,g_r$ være representanter
+			for alle konjugensklasser med mere end et element. Da er
+			$$|G| = |Z(G)| + \sum_{i=1}^r|G:C_G(g_i)|$$
+		\end{setn}
+		\begin{proof}
+			Fra sætning \ref{KonjPar} ses
+			det at konjugens klasser er en parition af $G$ så alle elementer ikke betragtet
+			i de førnævnte konjugens klasser er de elementer hvor
+			$$\{ghg\inv | \forall g \in G\} = \{a\}$$
+			Hvilket netop er alle elementer i $Z(G)$. Dette giver
+			$$|G| = |Z(G)| + \sum_{i=1}^r|\{ag_ia\inv | \forall a \in G\}| =
+			|Z(G)| + \sum_{i=1}^r|G:C_G(g_i)|$$
+		\end{proof}
+		\subsection*{Vis selv}
+		\begin{setn} \label{KonjPar}
+			Lad $G$ være en gruppe og $a,b \in G$ være konjugere af hindanden.
+			Da er
+			$$\{gag\inv | \forall g \in G\} = \{gbg\inv | \forall g \in G\}$$
+			og
+			$$a \in \{gag\inv | \forall g \in G\}$$
+		\end{setn}
+
+	\ud{
 		\subsection*{Opsamling}
 		\subsection*{Definitioner}
 		\subsection*{Sætninger}
