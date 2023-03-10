@@ -502,7 +502,7 @@
 			fåes det ønskede:
 			$$|HK| = \frac{|H||K|}{|H \cap K|}$$
 		\end{proof}
-		\begin{setn}
+		\begin{setn} \label{AbelOrdP}
 			Lad $G$ være en abelsk gruppe hvor $p \; \Big| \; |G|$ hvor $p$ er et primtal.
 			Da eksistere et element med orden $p$.
 		\end{setn}
@@ -576,7 +576,50 @@
 			og
 			$$a \in \{gag\inv | \forall g \in G\}$$
 		\end{setn}
-
+	\newpage
+	\section*{Eksistens af Sylow gruppe}
+		Vi er nu klar til at definere og vise eksistensen af Sylow grupper
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en endelig gruppe, $p$ være et primtal hvor $\exists \alpha,k \in \N_0$ så
+			$|G| = p^\alpha k$ med $p \nmid k$. Da er en Sylow $p$-undergruppe en gruppe med
+			orden $p^\alpha$.
+		\end{defi}
+		\subsection*{Vis selv}
+		\begin{setn} \label{UndGrupOp}
+			Lad $G$ være en gruppe, $H \unlhd G$ og $\bar{P} \le G/H$.
+			Da er
+			$$P = \bigcup_{S \in \bar{P}}S$$
+			en undergruppe af $G$ med
+			$|P| = |\bar{P}|\cdot|H|$.
+		\end{setn}
+		\begin{setn}
+			Lad $G$ være en gruppe og $H \le Z(G)$. Da er $H \unlhd G$.
+		\end{setn}
+		\subsection*{Sætninger}
+		\begin{setn}[Sylows sætning del 1]
+			Lad $G$ være en endelig gruppe og $p$ være et primtal.
+			Da eksistere en Sylow $p$-undergruppe i $G$.
+		\end{setn}
+		\begin{proof}
+			Vi vil vise sætningen ved induktion. Sætningen gælder trivielt for $|G|=1$.
+			Da $G \le G$ er en undergruppe med $|G| = p^0$.
+			Så antag at alle grupper med orden mindre end $|G|$ har Sylow $p$-undergrupper.
+			Antag at $p \; \Big | \; |Z(G)|$. Fra sætning \ref{AbelOrdP} eksistere et element
+			$g \in Z(G)$ med orden $p$ da $Z(G)$ er abelsk. Da er $N = <g>$ en undergruppe med
+			orden $p$. Da $N \le Z(G)$ er $G/N$ veldefineret.
+			Da $N \ne \{1\}$ er $|G/N| < |G|$. Specielt er $|G| = \frac{|G|}{p} = p^{\alpha-1}k$.
+			Fra inductions antagelsen eksistrere en Sylow $p$-undergruppe $\bar{P}$ af $G/N$
+			med orden $p^{\alpha-1}$. Fra sætning \ref{UndGrupOp} fåes en undergruppe $P$
+			med $|P| = |\bar{P}|\cdot|N| = p^\alpha$. Hvilket fuldføre caset $p \;\Big |\;|Z(G)|$.
+			Hvi dette ikke gælder kan klasse sætningen betragtes
+			$$|G| = |Z(G)| + \sum_{i=1}^r|G:C_G(g_i)|$$
+			Da $p$ ikke deler $|Z(G)|$. Må der eksistere et $g_i$ så $p \nmid \; |G:C_G(g_i)|$
+			Men da $|G:C_G(g_i)| = \frac{G}{|C_G(g_i)|}$ må $p^\alpha$ dele $|C_G(g_i)|$.
+			Da $g_i$ per definition ikke ligger i $Z(G)$ er $C_G(g_i) < G$ og dermed
+			er $|C_G(g_i)| < |G|$. Fra induktions antagelsen eksistere en Sylow $p$-undergruppe
+			$P$ af $C_G(g_i)$ med orden $p^\alpha$ men da er $P \le C_G(g_i) \le G$.
+		\end{proof}
 	\ud{
 		\subsection*{Opsamling}
 		\subsection*{Definitioner}
