@@ -27,9 +27,9 @@
 \newcommand{\ud}[1]{}
 
 \newtheorem{opg}{Opgave}
-\newtheorem{lem}{Lemma}
-\newtheorem{kor}{Korolar}
 \newtheorem{setn}{Sætning}
+\newtheorem{lem}[setn]{Lemma}
+\newtheorem{koro}[setn]{Korolar}
 \newtheorem{defi}{Definition}
 \newtheorem{bem}{Bemærkning}
 \newtheorem{nota}{Notation}
@@ -476,6 +476,10 @@
 			$<g_1,g_2,\dots g_n>$ den mindste undergruppe af $G$ eder indeholder
 			$g_1, g_2, \dots, g_n$.
 		\end{defi}
+		\begin{defi}
+			Lad $G$ være en gruppe og $H,K \le G$. Da betegner
+			$$HK := \{hk | \forall h \in H \forall k \in K\} = \bigcup_{h\in H} hK$$
+		\end{defi}
 		\subsection*{Vis selv}
 		\begin{setn}
 			Lad $G$ være en gruppe og $g \in G$. Da er $|g| = |<g>|$.
@@ -485,7 +489,7 @@
 			$$|x^n| = \frac{|x|}{\gcd(|x|,n)}$$
 		\end{setn}
 		\subsection*{Sætninger}
-		\begin{setn}
+		\begin{setn} \label{HK}
 			Lad $G$ være en gruppe og $H, K \le G$. Da er
 			$$|HK| = \frac{|H||K|}{|H \cap K|}$$
 		\end{setn}
@@ -620,7 +624,105 @@
 			er $|C_G(g_i)| < |G|$. Fra induktions antagelsen eksistere en Sylow $p$-undergruppe
 			$P$ af $C_G(g_i)$ med orden $p^\alpha$ men da er $P \le C_G(g_i) \le G$.
 		\end{proof}
+	\newpage
+	\section*{Orbits under konjugation}
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en gruppe og $H,K \le G$. Betragt mængden
+			$$S = \{gHg\inv| \forall g \in G\}$$
+			For et element $A \in S$ kaldes følgende mængde for
+			$A$'s orbit under operation fra $K$.
+			$$O_A = \{kAk\inv| \forall k \in K\}$$
+		\end{defi}
+		\subsection*{Vis selv}
+		\begin{setn}
+			Lad $G$ være en gruppe og $H,K \le G$. Da er $H\cup K \le H$ og $H\cup N \le N$.
+		\end{setn}
+		\begin{setn} \label{KonjGrup}
+			Lad $G$ være en endelig gruppe,$g \in G$ og $H \le G$. Da er $gHg\inv \le G$.
+		\end{setn}
+		\begin{setn}
+			Lad $G$ være en gruppe, $H \le G$ og $a,b \in G$ da gælder det at
+			$$H=(a\inv b)H(b\inv a) \biimp aHa\inv = bHb\inv$$
+		\end{setn}
+		\begin{setn}
+			Lad $G$ være en gruppe, $H,K \le G$, $S = \{gHg\inv| \forall g \in G\}$
+			og $O$ være mængden af alle orbits af elementer i $S$ under operation fra $K$.
+			Skrevet som mængde:
+			$$O = \{\{kAk\inv| \forall k \in K\}| \forall A \in S\}$$
+			Da er $O$ en partition af $S$.
+		\end{setn}
+		\subsection*{Sætninger}
+		\begin{setn} \label{OrbStø}
+			Lad $G$ være en gruppe, $H,K \le G$, $S = \{kHk\inv| \forall k \in K\}$. Da er
+			$$|S| = |K:N_K(H)|$$
+		\end{setn}
+		\begin{proof}
+			Lad $M$ være mængden af $N_K(A)$ sideklasser i $K$.
+			Betragt $f:M \too S$ defineret ved $f(aN_K(A)) = aAa\inv$.
+			Først ses det at $f$ er veldefineret og injektiv. Betragt $a,b \in K$. Da er
+			\begin{align*}
+				aN_K(A) = bN_K(A) &\biimp a\inv b \in N_K(A) \\
+				&\biimp A = (a\inv b)A(a\inv b)\inv = (a\inv b)A(b\inv a) \\
+				&\biimp f(aN_K(A)) = aAa\inv = bAb\inv = f(bN_K(A))
+			\end{align*}
+			Det ses let at $f$ er surjektiv da for alle $kAk\inv$ er $f(kN_K(A)) = kAk\inv$.
+			Ergo er $f$ en bijektion hvilket viser det ønskede.
+		\end{proof}
+		\begin{koro}
+			Lad $G$ være en gruppe, $H \le G$ og $S = \{gHg\inv| \forall g \in G\}$, $A \in S$.
+			Da er
+			$$|S| = |G:N_G(H)|$$
+		\end{koro}
+		\begin{proof}
+			Dette følger fra sætning \ref{OrbStø} med $K = G$.
+		\end{proof}
+		\begin{koro}
+			Lad $G$ være en gruppe, $H,K \le G$, $S = \{gHg\inv| \forall g \in G\}$, $A \in S$
+			og $O_A$ være $A$'s orbit under operation fra $K$. Da er
+			$$|O_A| = |K:N_K(A)|$$
+		\end{koro}
+		\begin{proof}
+			Dette følger fra sætning \ref{OrbStø} da $A \le G$ fra sætning \ref{KonjGrup}.
+		\end{proof}
 	\ud{
+	\section*{Sylows sætninger}
+		\subsection*{Definitioner}
+		\begin{defi}
+			Lad $G$ være en gruppe og $p$ være et primtal. En $p$-undegruppe er en undergruppe
+			med størelse $p^a$ for et $a \in \N$.
+		\end{defi}
+		\begin{defi}
+			Lad $G$ være en endelig gruppe og $p$ være et primtal. Da betegner $Syl_p(G)$ mængden
+			af Sylow $p$-undergrupper i $G$ og $n_p(G)$ defineres til at være $|Syl_p(G)|$.
+		\end{defi}
+		\subsection*{Vis selv}
+		\begin{setn} \label{HKGrup}
+			Lad $G$ være en gruppe og $H,K \le G$ med $H \le N_G(K)$. Da er $HK \le G$ med
+			$H \le HK$ og $K \le HK$.
+		\end{setn}
+		\subsection*{Sætninger}
+		\begin{setn}
+			Lad $G$ være en gruppe, $p$ være et primtal, $P \in Syl_p(G)$ og $Q \le G$ være en
+			$p$-undergruppe. Da er
+			$$Q\cap N_G(P) = Q\cap P$$
+		\end{setn}
+		\begin{proof}
+			Lad $H = Q\cap N_G(P)$.
+			Da $P \le N_g(P)$ må $Q\cap P \le H$. Per definition er $Q \le H$.
+			Vi mangler derfor kun at vise at $H \le P$. Fra sætning \ref{HK} at
+			$$|HP| = \frac{|H||P|}{|H \cap P|}$$
+			Da $H \cap P \le P$ må $H \cap P$ være en $p$-undergruppe. Tilsvarende
+			er $H \le Q$ hvilket medfører at $H$ er en $p$-undergruppe.
+			Da må $|H|$,$|P|$ pg $|H \cap P|$ være potenser af $p$ og dermed er
+			$HP$ en $p$-undergruppe. Da $H \le N_p(P)$ ses det fra sætning \ref{HKGrup}
+			at $P \le HP$. Dog er $P$ en maksimal $p$-undergruppe og derfor må
+			$P = HP$. Da er $H \le HP = P$ hvilket viser det ønskede.
+		\end{proof}
+		\begin{setn}
+			Lad $G$ være en gruppe, $p$ være et primtal, $P \in Syl_p(G)$ og $Q \le G$
+			være en $p$-undergruppe. Da eksistere $g \in G$ så $Q \le gPg\inv$.
+		\end{setn}
 		\subsection*{Opsamling}
 		\subsection*{Definitioner}
 		\subsection*{Sætninger}
