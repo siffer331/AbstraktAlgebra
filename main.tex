@@ -653,7 +653,7 @@
 			Da er $O$ en partition af $S$.
 		\end{setn}
 		\subsection*{Sætninger}
-		\begin{setn} \label{OrbStø}
+		\begin{setn} \label{OrbStøL}
 			Lad $G$ være en gruppe, $H,K \le G$, $S = \{kHk\inv| \forall k \in K\}$. Da er
 			$$|S| = |K:N_K(H)|$$
 		\end{setn}
@@ -669,23 +669,23 @@
 			Det ses let at $f$ er surjektiv da for alle $kAk\inv$ er $f(kN_K(A)) = kAk\inv$.
 			Ergo er $f$ en bijektion hvilket viser det ønskede.
 		\end{proof}
-		\begin{koro}
+		\begin{koro} \label{ConjTal}
 			Lad $G$ være en gruppe, $H \le G$ og $S = \{gHg\inv| \forall g \in G\}$, $A \in S$.
 			Da er
 			$$|S| = |G:N_G(H)|$$
 		\end{koro}
 		\begin{proof}
-			Dette følger fra sætning \ref{OrbStø} med $K = G$.
+			Dette følger fra sætning \ref{OrbStøL} med $K = G$.
 		\end{proof}
-		\begin{koro}
+		\begin{koro} \label{OrbStø}
 			Lad $G$ være en gruppe, $H,K \le G$, $S = \{gHg\inv| \forall g \in G\}$, $A \in S$
 			og $O_A$ være $A$'s orbit under operation fra $K$. Da er
 			$$|O_A| = |K:N_K(A)|$$
 		\end{koro}
 		\begin{proof}
-			Dette følger fra sætning \ref{OrbStø} da $A \le G$ fra sætning \ref{KonjGrup}.
+			Dette følger fra sætning \ref{OrbStøL} da $A \le G$ fra sætning \ref{KonjGrup}.
 		\end{proof}
-	\ud{
+		\newpage
 	\section*{Sylows sætninger}
 		\subsection*{Definitioner}
 		\begin{defi}
@@ -697,14 +697,17 @@
 			af Sylow $p$-undergrupper i $G$ og $n_p(G)$ defineres til at være $|Syl_p(G)|$.
 		\end{defi}
 		\subsection*{Vis selv}
+		\begin{setn}
+			Lad $G$ være en gruppe, $H \le G$ og $g \in G$. Da er $H \cong gHg\inv$.
+		\end{setn}
 		\begin{setn} \label{HKGrup}
 			Lad $G$ være en gruppe og $H,K \le G$ med $H \le N_G(K)$. Da er $HK \le G$ med
 			$H \le HK$ og $K \le HK$.
 		\end{setn}
 		\subsection*{Sætninger}
-		\begin{setn}
-			Lad $G$ være en gruppe, $p$ være et primtal, $P \in Syl_p(G)$ og $Q \le G$ være en
-			$p$-undergruppe. Da er
+		\begin{setn} \label{SylNormCap}
+			Lad $G$ være en endelig gruppe, $p$ være et primtal, $P \in Syl_p(G)$
+			og $Q \le G$ være en $p$-undergruppe. Da er
 			$$Q\cap N_G(P) = Q\cap P$$
 		\end{setn}
 		\begin{proof}
@@ -719,10 +722,42 @@
 			at $P \le HP$. Dog er $P$ en maksimal $p$-undergruppe og derfor må
 			$P = HP$. Da er $H \le HP = P$ hvilket viser det ønskede.
 		\end{proof}
-		\begin{setn}
-			Lad $G$ være en gruppe, $p$ være et primtal, $P \in Syl_p(G)$ og $Q \le G$
+		\begin{setn} \label{Syl2}
+			Lad $G$ være en endelig gruppe, $p$ være et primtal, $P \in Syl_p(G)$ og $Q \le G$
 			være en $p$-undergruppe. Da eksistere $g \in G$ så $Q \le gPg\inv$.
 		\end{setn}
+		\begin{proof}
+			Betragt $S = \{gPg\inv| \forall g \in P\}$ med $S = \{P_1,P_2,\dots,P_r\}$
+			og orbitsne i $S$ under konjugation fra $Q$ $O = \{O_1,O_2,\dots,O_s\}$.
+			Da er $|O_1|+|O_2|+\dots+|O_s| = r$. Da kan $P_1,P_2,\dots,P_r$ omnavngives
+			så $P_i \in O_i$ for $0<i\le s$. Da $P_i \cong P$ er en $p$-sylowgruppes ses
+			det fra sætning \ref{OrbStø} og \ref{SylNormCap} at
+			$|O_i| = |Q: N_Q(P_i)| = |Q: N_G(P_i)\cap Q| = |Q:P_i\cap Q|$.
+			Specielt gælder dette for valget $Q = P_1$. For $i \ne 1$ er
+			$P_i \ne P_1$ og dermed er $|P_1:P_i\cap p_1| > 1$ og må dele $|P_1|$
+			som er en potens af $p$. Ergo må $p \big | \; |O_i|$ for $i \ne 1$.
+			Det ses også at $|O_1| = |P_1:P_1\cap p_1| = 1$
+			Da er $r = |O_1|+|O_2|+\dots+|O_s| = 1 + |O_2|+\dots+|O_s|$
+			og dermed er $r \cong 1 \; (\mathrm{mod}\; p)$.
+
+			Antag nu for modstrid at der ikke eksistere $i$ så $Q \subseteq P_i$.
+			Da må $|Q:P_i\cap Q| > 1$ for alle $i$ og da $Q$ er en $p$-undergruppe må
+			$p$ dele $|Q:P_i\cap Q| = |O_i|$. Da må $p$ dele $r = |O_1|+|O_2|+\dots+|O_s|$
+			hvilket er i modstrid med $r \cong 1 \; (\mathrm{mod}\; p)$.
+		\end{proof}
+		\begin{setn} \label{Syl3}
+			Lad $G$ være en gruppe og $p$ være et primtal.
+			Da er $n_p(G) \cong 1 \; (\mathrm{mod}\; p)$ og $n_p(G) \big| \; |G|$.
+		\end{setn}
+		\begin{proof}
+			Lad $P \in Syl_p(G)$ og $S = \{gPg\inv| \forall g \in P\}$. Betragt nu $Q \in Syl_p(G)$.
+			Da siger sætning \ref{Syl2} at der eksister $g$ så $Q \subseteq gPg\inv$.
+			Da $|Q| = |P| = |gPg\inv|$ må $Q = gPg\inv$ og dermed er $S = Syl_p(G)$.
+			I beviset til sætning \ref{Syl2} blev det vist at $|S| \cong 1  \; (\mathrm{mod}\; p)$.
+			Fra sætning \ref{ConjTal} ses det at $|S| = |G:N_G(H)|$ og dermed
+			må $n_p(G) = |S|$ dele $|G|$.
+		\end{proof}
+	\ud{
 		\subsection*{Opsamling}
 		\subsection*{Definitioner}
 		\subsection*{Sætninger}
